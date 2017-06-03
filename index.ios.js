@@ -1,11 +1,23 @@
+/**
+ * App is main class of ios app of this albums's app
+ * @type {Class}
+ */
+
 import React from 'react';
 import {
-  Text,
-  AppRegistry
+  AppRegistry,
+  View
 } from 'react-native';
+import AlbumList from './src/components/AlbumList';
+import Header from './src/components/Header';
 
-const App = () => (
-  <Text>Some Text</Text>
-);
+const App = () => {
+  return (
+    <View>
+      <Header headerText={'Albums'} />
+      <AlbumList />
+    </View>
+  );
+};
 
 AppRegistry.registerComponent('albums', () => App);
