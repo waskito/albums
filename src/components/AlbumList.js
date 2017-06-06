@@ -5,18 +5,29 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 
 
 class AlbumList extends Component {
+  state = {
+    albums: []
+  };
+
   componentWillMount() {
-    console.log('AlbumList willMount!');
+    fetch('https://rallycoding.herokuapp.com/api/music_albums')
+      .then((response) => response.json())
+      .then((responseData) => this.setState({ albums: responseData }));
   }
   render() {
+    const { albums } = this.state;
     return (
-      <View>
-        <Text>Album List!!</Text>
-      </View>
+      <ScrollView>
+        {albums &&
+          albums.map((album, index) => (
+              <Text key={`album.${index}`}>{album.title}</Text>
+            ))
+        }
+      </ScrollView>
     );
   }
 }
