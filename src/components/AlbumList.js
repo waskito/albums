@@ -5,7 +5,8 @@
  */
 
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
+import AlbumDetail from './AlbumDetail';
 
 
 class AlbumList extends Component {
@@ -24,7 +25,10 @@ class AlbumList extends Component {
       <ScrollView>
         {albums &&
           albums.map((album, index) => (
-              <Text key={`album.${index}`}>{album.title}</Text>
+              <AlbumDetail
+                key={`album.${index}`}
+                album={album}
+              />
             ))
         }
       </ScrollView>
